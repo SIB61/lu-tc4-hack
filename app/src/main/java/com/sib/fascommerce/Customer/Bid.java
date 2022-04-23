@@ -80,7 +80,7 @@ EditText vs;
                                     Toast.makeText(getApplicationContext(),"Abid234",Toast.LENGTH_LONG).show();
                                 }
                                 else
-                                {
+                                {   Toast.makeText(getApplicationContext(),"Abid",Toast.LENGTH_LONG).show();
 
                                 }
 
