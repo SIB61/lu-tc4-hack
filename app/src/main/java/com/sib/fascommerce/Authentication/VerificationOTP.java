@@ -132,10 +132,21 @@ public class VerificationOTP extends AppCompatActivity {
                                             hm5.put("Points", "0");
                                             hm5.put("Buy", "0");
                                             FirebaseDatabase.getInstance().getReference("Users").child(wh+"s").child(uid).setValue(hm5);
+                                             switch (accountType) {
+                                                 case 0:
+                                                 startActivity(new Intent(VerificationOTP.this, User_Section1.class));
+                                                  break;
+                                                 case 1:
+                                                     startActivity(new Intent(VerificationOTP.this, SellerHome.class));
+                                                     break;
+                                                 case 2:
+                                                     startActivity(new Intent(VerificationOTP.this, AdminHomePage.class ));
+                                                     break;
 
-                                                startActivity(new Intent(VerificationOTP.this, Registration.class));
+                                             }
+                                             finish();
 
-                                        } else {
+                                             } else {
                                             Log.d("TAG", "signUp: " + task4.getException());
                                         }
                                     });

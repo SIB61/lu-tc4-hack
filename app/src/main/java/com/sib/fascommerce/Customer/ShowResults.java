@@ -67,7 +67,7 @@ List<ProductModel> list1=new ArrayList<>();
         ad=new ProAdapter(ShowResults.this,list,"Sh");
         rere.setAdapter(ad);
         re.setText("Showing results for "+re1);
-        FirebaseDatabase.getInstance().getReference("AllProducts").addValueEventListener(new ValueEventListener() {
+       FirebaseDatabase.getInstance().getReference("AllProducts").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot s:snapshot.getChildren())

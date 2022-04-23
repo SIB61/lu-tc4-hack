@@ -203,12 +203,19 @@ private String[] options = {"automatic","manual"};
                     mp.put("Buy",b+"");
 
                     FirebaseDatabase.getInstance().getReference("Users").child("Sellers").child(uid).updateChildren(mp);
+
+
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
 
-                }});
+                }
+
+            });
+            Toast.makeText(AddNewActivity.this, "Product Added Successfully", Toast.LENGTH_SHORT).show();
+            onBackPressed();
+    }
 }
-}
+
 }

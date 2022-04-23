@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -37,7 +39,7 @@ public class onGoingFragments extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_on_going_fragments, container, false);
         ArrayList<ProductModel> li=new ArrayList<>();
-      RecyclerView rt= view.findViewById(R.id.rt);
+       RecyclerView rt= view.findViewById(R.id.rt);
         OnGoingAdapter og=new OnGoingAdapter(li);
 
         SessionManager sh = new SessionManager(getContext(), SessionManager.USERSESSION);
@@ -45,15 +47,18 @@ public class onGoingFragments extends Fragment {
         String uid=hm.get(SessionManager.UID);
         rt.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         rt.setAdapter(og);
-        FirebaseDatabase.getInstance().getReference("Users").child("Sellers").child(uid).addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("AllProducts").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot s: snapshot.getChildren())
                 {
                     ProductModel pd=s.getValue(ProductModel.class);
+                    Toast.makeText(getContext(), pd.getUid(), Toast.LENGTH_SHORT).show();
+                    if(pd.getUid()== FirebaseAuth.getInstance().getUid())
                     li.add(pd);
                 }
-                og.notifyDataSetChanged();
+                OnGoingAdapter og=new OnGoingAdapter(li);
+                rt.setAdapter(og);
             }
 
             @Override
@@ -61,12 +66,6 @@ public class onGoingFragments extends Fragment {
 
             }
         });
-
-
         return view;
-
-
-
-
     }
 }

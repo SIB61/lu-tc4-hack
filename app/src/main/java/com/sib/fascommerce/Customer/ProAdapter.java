@@ -56,8 +56,8 @@ public class ProAdapter extends RecyclerView.Adapter<ProAdapter.MED> {
     public void onBindViewHolder(@NonNull MED holder, @SuppressLint("RecyclerView") int i) {
         // Toast.makeText(c,list.size()+"",Toast.LENGTH_LONG).show();
         //  Toast.makeText(c, list.get(i).getURL(),Toast.LENGTH_LONG).show();
-        /*try{
-            StorageReference storageReference= FirebaseStorage.getInstance().getReference(list.get(i).get());
+        try{
+            StorageReference storageReference= FirebaseStorage.getInstance().getReference(list.get(i).getpUrl()+"/"+list.get(i).getpUrl()+"0");
             //Glide.with(holder.itemView.getContext()).load(storageReference).into(imageView);
             storageReference.getDownloadUrl().addOnSuccessListener(uri -> {
                 //  Toast.makeText(c, list.get(i).getURL(),Toast.LENGTH_LONG).show();
@@ -72,7 +72,7 @@ public class ProAdapter extends RecyclerView.Adapter<ProAdapter.MED> {
             });}
         catch (Exception e){
 
-        }*/
+        }
         try{
         holder.name.setText(list.get(i).getTitle());
         holder.price.setText(list.get(i).getBasePrice()+"Tk.");

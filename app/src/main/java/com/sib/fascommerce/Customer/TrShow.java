@@ -36,14 +36,14 @@ public class TrShow extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // requestWindowFeature(Window.FEATURE_NO_TITLE);
-      //  getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        // requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //  getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_tr_show);
-        re=(TextView) findViewById(R.id.re);
-        gr=(RecyclerView) findViewById(R.id.grid);
-        rere=(RecyclerView) findViewById(R.id.rere);
-        re1=getIntent().getStringExtra("Re");
-        SessionManager sh = new SessionManager(getApplicationContext(), SessionManager.USERSESSION);
+        re = (TextView) findViewById(R.id.re);
+        gr = (RecyclerView) findViewById(R.id.grid);
+        rere = (RecyclerView) findViewById(R.id.rere);
+        re1 = getIntent().getStringExtra("Re");
+       SessionManager sh = new SessionManager(getApplicationContext(), SessionManager.USERSESSION);
         HashMap<String, String> hm = sh.returnData();
        // email = hm.get(SessionManager.EMAIL);
         name = hm.get(SessionManager.FULLNAME);
@@ -53,7 +53,7 @@ public class TrShow extends AppCompatActivity {
         ad=new ProAdapter(TrShow.this,list1,"Sh");
         rere.setAdapter(ad);
         re.setText("Showing results for "+re1);
-        FirebaseDatabase.getInstance().getReference("AllProducts").addValueEventListener(new ValueEventListener() {
+       FirebaseDatabase.getInstance().getReference("AllProducts").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list1.clear();
@@ -76,15 +76,15 @@ public class TrShow extends AppCompatActivity {
 
             }
         });
-        ty[0]="Sports";
-        ty[1]="Accessories";
-        re3=2;
+        ty[0] = "Sports";
+        ty[1] = "Accessories";
+        re3 = 2;
         gr.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
 
 
-        agr=new ProAdapter(TrShow.this,list,"Us");
+        agr = new ProAdapter(TrShow.this, list, "Us");
         gr.setAdapter(agr);
-        for(int i=0;i<re3;i++) {
+        for (int i = 0; i < re3; i++) {
 
             FirebaseDatabase.getInstance().getReference("AllProductsCategory").child(ty[i]).addValueEventListener(new ValueEventListener() {
                 @Override

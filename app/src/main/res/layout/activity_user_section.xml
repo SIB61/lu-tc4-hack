@@ -50,7 +50,7 @@
                         android:layout_marginBottom="10dp"
                         android:layout_weight="10"
                         android:background="@drawable/backg"
-                        android:hint="Search Medicine Name"
+                        android:hint="Search Product Name"
                         android:textColorHint="#000"
                         app:boxStrokeColor="#000"
                         app:boxStrokeWidthFocused="2dp"
@@ -328,6 +328,7 @@
                         android:layout_marginBottom="20dp"
                         android:background="#fff"
                         android:orientation="horizontal" />
+
                     <TextView
                         android:id="@+id/others"
                         android:layout_width="match_parent"

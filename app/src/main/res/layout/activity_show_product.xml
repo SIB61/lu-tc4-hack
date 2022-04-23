@@ -19,23 +19,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.smarteist.autoimageslider.SliderView
-                android:id="@+id/image_slider"
+            <ImageView
+                android:id="@+id/img"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                app:sliderAnimationDuration="600"
-                app:sliderAutoCycleDirection="back_and_forth"
-                app:sliderAutoCycleEnabled="true"
-                app:sliderIndicatorAnimationDuration="600"
-                app:sliderIndicatorGravity="center_horizontal|bottom"
-                app:sliderIndicatorMargin="15dp"
-                app:sliderIndicatorOrientation="horizontal"
-                app:sliderIndicatorPadding="3dp"
-                app:sliderIndicatorRadius="2dp"
-                app:sliderIndicatorSelectedColor="#5A5A5A"
-                app:sliderIndicatorUnselectedColor="#FFF"
-                app:sliderScrollTimeInSec="2"
-                app:sliderStartAutoCycle="true" />
+                android:layout_height="200dp"></ImageView>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -76,24 +63,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Base Price: "
-                    android:textSize="16sp"
-                    android:textColor="#000"></TextView>
+                    android:textColor="#000"
+                    android:textSize="16sp"></TextView>
 
                 <TextView
                     android:id="@+id/con"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Condition: "
-                    android:textSize="16sp"
-                    android:textColor="#000"></TextView>
+                    android:textColor="#000"
+                    android:textSize="16sp"></TextView>
 
                 <TextView
                     android:id="@+id/model"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Category: "
-                    android:textSize="16sp"
-                    android:textColor="#000"></TextView>
+                    android:textColor="#000"
+                    android:textSize="16sp"></TextView>
 
 
             </LinearLayout>
@@ -127,6 +114,40 @@
                     android:textSize="16dp"></TextView>
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/abc"
+                    android:layout_weight="4"
+                    android:hint="place your bid">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/bidtk"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/bi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button"
+                    android:gravity="center"
+                    android:text="Bid"
+                    android:textColor="#fff"
+                    android:textSize="18sp"
+                    android:textStyle="bold"></androidx.appcompat.widget.AppCompatButton>
+
+            </LinearLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -134,16 +155,65 @@
                 android:layout_marginBottom="20dp"
                 android:background="@color/grey"
                 android:padding="5dp"
-                android:text="Bids in this product"
+                android:text=" Top Bid So far"
                 android:textColor="#000"
                 android:textSize="18dp"
                 android:textStyle="bold"></TextView>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/bids"
+            <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/wer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"></androidx.recyclerview.widget.RecyclerView>
+                android:layout_margin="10dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/profile"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"></de.hdodenhof.circleimageview.CircleImageView>
+
+                        <TextView
+                            android:id="@+id/name1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textStyle="bold"></TextView>
+
+                        <TextView
+                            android:id="@+id/points"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/name1"
+                            android:layout_marginTop="5dp"
+                            android:text="+22Points"
+                            android:textColor="#000"
+                            android:textStyle="bold"></TextView>
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/bid"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Bid: 200Tk."
+                        android:textSize="20sp"
+                        android:gravity="end"
+                        android:textColor="#000"
+                        android:textStyle="bold"></TextView>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:layout_width="match_parent"
@@ -221,29 +291,5 @@
                 android:textSize="15sp"></TextView>
         </LinearLayout>
     </ScrollView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:elevation="10dp"
-        android:id="@+id/ca">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:gravity="center"
-                android:text="Bid"
-                android:id="@+id/bi"
-                android:background="@drawable/button"
-                android:textSize="18sp"
-                android:textColor="#fff"
-                android:textStyle="bold"></androidx.appcompat.widget.AppCompatButton>
 
-        </LinearLayout>
-    </LinearLayout>
 </RelativeLayout>
